@@ -5,8 +5,6 @@ Input: e = 3, a = [5, -4.2, 18, 7]
 Output: no
 */
 
-
-
 var e = 3;
 var a = [5, -4.2, 5, 3]
 var result = "No";
@@ -16,7 +14,6 @@ for (i=0; i<a.length; i++) {
         result = "Yes"} 
 }   
 console.log(result)
-
 
 /*
 2. Write a program that multiplies every positive element of a given array by 2.
@@ -46,8 +43,8 @@ var index = 0;
 
 for (var i = 0; i < array.length; i++) {
     if ( array[i] < min) {
-        min = array [i]
-        index = i
+        min = array [i];
+        index = i;
     }
 } console.log (min, index)
 
@@ -60,14 +57,19 @@ Output: 2
 
 var array = [4, 2, 2, -1, 6];
 var min = array[0];
-
+var result = array[0];
 
 for (var i = 0; i < array.length; i++) {
     if (array [i] < min) {
-        min = array [i]
-    } 
-} console.log (min)
-
+        min = array [i];
+    }
+}
+for (var i = 0; i < array.length; i++) {
+    if (array[i] > min && array[i] < result) {
+        result = array[i];
+    }
+}
+console.log (result)
 
 
 
@@ -96,11 +98,15 @@ Input array: [3, 4, 12, 8]
 Output: The array isn’t symmetric.
 */
 
+var array = [2, 4, -2, 7, -2, 4, 2];
+var result = "The array isn't symmetric"
 
-
-
-
-
+for (var i = 0; i < array.length; i++) {
+    if (array[i] === array[array.length - 1 - i]) {
+    result = ("The array is simetric")
+    }
+}
+console.log (result)
 
 
 /*
@@ -110,17 +116,59 @@ Input arrays: [4, 5, 6, 2], [3, 8, 11, 9]
 Output array: [4, 3, 5, 8, 6, 11, 2, 9]
 */
 
+var array1 = [4, 5, 6, 2];
+var array2 = [3, 8, 11, 9];
+var result = []
+
+for (var i = 0; i < array1.length*2; i++) {
+    if (i%2===0) {
+        result[i] = array1[i/2]
+    } else result[i] = array2[(i-1)/2]
+}
+console.log(result)
+
 
 
 /*
 8. Write a program that concatenates two arrays.
 Input arrays: [4, 5, 6, 2], [3, 8, 11, 9]
 Output array: [4, 5, 6, 2, 3, 8, 11, 9]
+*/
 
+var a = [4, 5, 6, 2];
+var b = [3, 8, 11, 9];
+var result = [];
+
+for (var i = 0; i < a.length + b.length; i++) {
+    if (i < a.length) {
+        result[i] = a[i];
+    } else result[i] = b[i-b.length];
+}
+console.log (result)
+
+
+/*
 9. Write a program that deletes a given element e from the array a.
 Input: e = 2, a = [4, 6, 2, 8, 2, 2]
-
 Output array: [4, 6, 8]
+*/
+
+var e = 2;
+var a = [4, 6, 2, 8, 2, 2];
+result = [];
+
+for (var i = 0; i < a.length; i++ ) {
+    if (e < a[i] || e > a[i]) {
+        result[i] = a[i];
+    } else result[i] = 
+}
+console.log (result)
+
+
+
+
+
+/*
 10. Write a program that inserts a given element e on the given position p in the array a. If
 the value of the position is greater than the array length, print the error message.
 Input: e = 78, p = 3, a = [2, -2, 33, 12, 5, 8]
