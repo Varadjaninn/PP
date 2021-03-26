@@ -103,7 +103,7 @@ var result = "The array isn't symmetric"
 
 for (var i = 0; i < array.length; i++) {
     if (array[i] === array[array.length - 1 - i]) {
-    result = ("The array is simetric")
+    result = ("The array is symmetric")
     }
 }
 console.log (result)
@@ -175,5 +175,13 @@ Output: [2, -2, 33, 78, 12, 5, 8]
 var e = 78;
 var p = 3;
 var a = [2, -2, 33, 12, 5, 8];
-var result = [];
+var newArr = [];
 
+for (var i = 0; i < a.length; i++){
+    if (i === p) {
+        newArr[i] = e;
+    }
+    newArr[newArr.length] = a[i];
+}
+
+console.log(newArr)
