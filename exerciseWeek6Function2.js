@@ -208,11 +208,10 @@ non-numeric values.
 
 function convArr(array) {
     var newArray = [];
-    var x = 0;
     for (var i = 0; i < array.length; i++) {
-        if (isFinite(array[i])) {
-            newArray[x] = parseFloat(array[i]);
-            x++;
+        var conv = parseFloat(array[i]);
+        if (isFinite(conv)) {
+            newArray[newArray.length] = conv;
         }
     }
     return newArray
@@ -255,4 +254,40 @@ humanize a number (formats a number to a human-readable string) with
 the correct suffix such as 1st, 2nd, 3rd or 4th.
 1 -> 1st
 11 -> 11th
+*/
 
+function redExer(n) {
+    var str = "" + n;
+    if (str[str.length -1] >= 1 && str[str.length - 1] <= 3 && str[str.length - 2] == 1) {
+        str += "th";
+    } else if (str[str.length -1] == 2) {
+        str += "nd";
+    } else if (str[str.length -1] == 3) {
+        str += "rd";
+    } else if (str[str.length -1] == 1) {
+        str += "st";
+    } else {
+        str += "th";
+    }
+    return str;
+}
+console.log(redExer(211)); //???
+
+//dario:
+function humanizeNumber(num) {
+    if (typeof num == "undefined") {
+        return;
+    }
+    if (num % 100 >= 11 && num % 100 <= 13) {
+        return num + "th";
+    }
+    switch (num % 10) {
+        case 1:
+            return num + "st";
+        case 2:
+            return num + "nd";
+        case 3:
+            return num + "rd";
+    }
+    return num + "th";
+}
