@@ -105,9 +105,7 @@ Output: [ 2, 10, 12, 16, 22, 24, 26, 30 ]
 function sortArr(array) {
     var newArray = [];
     for (var i = 0; i < array.length; i++) {
-        console.log(i)
         for (var j = i + 1; j < array.length; j++) {
-            console.log(j)
             if (array[i] > array[j]) {
                 var repos = array [i];
                 array[i] = array[j];
