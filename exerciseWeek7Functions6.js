@@ -88,4 +88,115 @@ console.log(returnDig(205025));
 
 /*5. Write a program that prints a multiplication table for numbers up to 12.*/
 
+function multTabl() {
+    var newArray = [];
+    for (var i = 1; i <= 12; i++) {
+        for (var j = 1; j <= 12; j++) {
+            newArray += i*j + '';
+        }
+        newArray += '\n'
+    }
+    return newArray;
+} 
+console.log(multTabl())
 
+/* 6. Write a function to input temperature in Centigrade and convert to Fahrenheit.
+F = (9*C/5) + 32 */
+
+function convTemperature(c) {
+    var Fahrenheit = (9 * c / 5) + 32;
+    return Fahrenheit;
+}
+console.log(convTemperature(20));
+console.log(convTemperature(10));
+
+/* 7. Write a function to find the maximum element in array of numbers. Filter out all non-number elements. */
+
+function maxElement(array) {
+    var newArray = [];
+    var max = array[0];
+    for (var i = 0; i < array.length; i++){
+        if (typeof array[i] === 'number' && !isNaN(array[i])) {
+            newArray[newArray.length] = array[i];
+        }
+    }
+    for (var j = 1; j < newArray.length; j++) {
+        if (max < newArray[j]) {
+            max = newArray[j];
+        }
+    }
+    return max;
+}
+console.log(maxElement([2, 8, true, 6, 22, 'a', 77, null, 58, 33, 1, 88, NaN, 7, 99]))
+
+/* 8. Write a function to find the maximum and minimum elements. Function returns an array. */
+
+function maxMinElements(array) {
+    var max = array[0];
+    var min = array[0];
+    for (var i = 1; i < array.length; i++) {
+        if (max < array[i]) {
+            max = array[i];
+        }
+        if (min > array[i]) {
+            min = array[i];
+        }
+    }
+    var maxMinarray = [max,min];
+    return maxMinarray;
+}
+console.log(maxMinElements([12, 55, 22, 88, 81, 95, 2, 7, 24, 65, 99]))
+
+/* 9. Write a function to find the median element of array. */
+
+function medElement(array) {
+    var medEl = array[0];
+    for (var i = 0; i < array.length; i++) {
+        if (i === array.length - 1 - i) {
+        medEl = array[i];
+        }
+
+    }
+    return medEl;
+}
+console.log(medElement([2, 22, 55, 77, 1, 166, 2]))
+
+/*
+10. Write a function to find the element that occurs most frequently.
+*/
+
+
+
+/*
+11. Write a function to find and return the first, middle and last element of an array if the array
+has odd number of elements. If number of elements is even, return just the first and the
+last. In other cases (empty array), input array should be returned.
+
+12. Write a function to find the average of N elements. Make the function flexible to receive
+dynamic number or parameters.
+
+13. Write a function to find all the numbers greater than the average.
+
+14. The body mass index (BMI) is the ratio of the weight of a person (in kilograms) to the
+square of the height (in meters). Write a function that takes two parameters, weight and
+height, computes the BMI, and prints the corresponding BMI category:
+● Starvation: less than 15
+● Anorexic: less than 17.5
+● Underweight: less than 18.5
+● Ideal: greater than or equal to 18.5 but less than 25
+● Overweight: greater than or equal to 25 but less than 30
+● Obese: greater than or equal to 30 but less than 40
+● Morbidly obese: greater than or equal to 40
+
+15. Write a function that takes a list of strings and prints them, one per line, in a rectangular
+frame.:
+For example the list ['Hello', 'World', 'in', 'a', 'frame'] gets
+printed as:
+*********
+* Hello *
+* World *
+* in    *
+* a     *
+* frame *
+*********
+*/
