@@ -152,31 +152,117 @@ console.log(maxMinElements([12, 55, 22, 88, 81, 95, 2, 7, 24, 65, 99]))
 function medElement(array) {
     var medEl = array[0];
     for (var i = 0; i < array.length; i++) {
-        if (i === array.length - 1 - i) {
-        medEl = array[i];
+        if (array.length % 2 === 1) {
+            if (i === array.length - 1 - i) {
+            medEl = array[i];
+            }
+        } else {
+            medEl = [array[array.length/2 - 1], array[array.length/2]];
         }
 
     }
     return medEl;
 }
-console.log(medElement([2, 22, 55, 77, 1, 166, 2]))
+console.log(medElement([2, 22, 55, 77, 166, 2, 76]));
+console.log(medElement([2, 22, 55, 77, 1, 166, 2, 76]));
 
 /*
 10. Write a function to find the element that occurs most frequently.
 */
 
-
+function mostOccurElement(array) {
+    var mostFrequent;
+    var count = 0;
+    var mostCount = 0;
+    for (var i = 0; i < array.length; i++) {
+        for (var j = i + 1; j < array.length; j++) {
+            if (array[i] === array[j]) {
+                count++;
+            }
+            if (mostCount < count) {
+                mostCount = count;
+                mostFrequent = array[i];
+            }
+        }
+        count = 0;
+    }
+    return mostFrequent;
+}
+console.log(mostOccurElement([2, 8, 'a', true, 6, 1, 22, 'a', 8, 77, null, 58, 33, 88, 'a', NaN, 7, 1, 99, 'a']))
 
 /*
 11. Write a function to find and return the first, middle and last element of an array if the array
 has odd number of elements. If number of elements is even, return just the first and the
 last. In other cases (empty array), input array should be returned.
+*/
 
+function findElements(array) {
+    var firstElement = array[0];
+    var lastElement = array[array.length - 1];
+    var middleElement = array[(array.length-1)/2];
+    var result = [];
+
+    if (array.length % 2 === 0 && array.length !== 0) {
+        result = [firstElement, lastElement];
+    } else if (array.length % 2 !== 0) {
+        result = [firstElement, middleElement, lastElement];
+    } else {
+        result = array;
+    }
+    return result;
+}   
+console.log(findElements([1, 2, 3, 4, 5, 6, 7, 8, 9]));
+console.log(findElements([1, 2, 3, 4, 5, 6, 7, 8]));
+console.log(findElements([]));
+
+
+/*
 12. Write a function to find the average of N elements. Make the function flexible to receive
 dynamic number or parameters.
+*/
 
+function average() {
+    var sum = 0;
+    var result = 0;
+
+    for(var i = 0; i < arguments.length; i++) {
+        sum += arguments[i];
+    }
+    result = sum/arguments.length;
+
+    return result;
+}
+console.log(average(1, 2, 3, 4, 5, 6, 7, 8, 9));
+console.log(average(2, 12, 22, 55, 44, 88, 99));
+
+
+
+/*
 13. Write a function to find all the numbers greater than the average.
+*/
 
+function greatThanAverage() {
+    var sum = 0;
+    var average = 0;
+    var result = [];
+
+    for (var i = 0; i < arguments.length; i++) {
+        sum += arguments[i];
+    } 
+    average = sum / arguments.length;
+    
+    for (var j = 0; j < arguments.length; j++) {
+        if (arguments[j] > average) {
+            result[result.length] = arguments[j];
+        }
+    }
+    return result;
+}
+console.log(greatThanAverage(1, 10, 2, 3, 4, 5, 6, 7, 8, 9));
+console.log(greatThanAverage(2, 66, 12, 22, 55, 44, 88, 99));
+
+
+/*
 14. The body mass index (BMI) is the ratio of the weight of a person (in kilograms) to the
 square of the height (in meters). Write a function that takes two parameters, weight and
 height, computes the BMI, and prints the corresponding BMI category:
