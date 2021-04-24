@@ -273,7 +273,32 @@ height, computes the BMI, and prints the corresponding BMI category:
 ● Overweight: greater than or equal to 25 but less than 30
 ● Obese: greater than or equal to 30 but less than 40
 ● Morbidly obese: greater than or equal to 40
+*/
 
+function bmiCategory(weight, height) {
+    var bmi = weight/(height*height);
+    var bmiFinal = '';
+    if (bmi < 15) {
+        bmiFinal = 'Starvation';
+    } else if (bmi >= 15 && bmi < 17.5) {
+        bmiFinal = 'Anorexic';
+    } else if (bmi >= 17.5 && bmi < 18.5) {
+        bmiFinal = 'Underweight';
+    } else if (bmi >= 18.5 && bmi < 25) {
+        bmiFinal = 'Ideal';
+    } else if (bmi >= 25 && bmi < 30) {
+        bmiFinal = 'Overweight';
+    } else if (bmi >= 30 && bmi < 40) {
+        bmiFinal = 'Obese';
+    } else {
+        bmiFinal = 'Morbidly obese'
+    }
+    return ('Your BMI is: ' + bmi + ', and your BMI category is: ' + bmiFinal);
+}
+console.log(bmiCategory(96, 1.92));
+
+
+/*
 15. Write a function that takes a list of strings and prints them, one per line, in a rectangular
 frame.:
 For example the list ['Hello', 'World', 'in', 'a', 'frame'] gets
@@ -286,3 +311,42 @@ printed as:
 * frame *
 *********
 */
+
+function rectangularFrame(array){
+    var longestWordlength = 0;
+    var topAndBottomString = '';
+    var middlePart = '';
+    var spaceSize = 0;
+    var spaceString = '';
+    var frame = '';
+
+
+    function makeStringFromChar(char, num) {
+        var stringResult = '';
+        for (var i = 0; i < num; i++) {
+            stringResult += char;
+        }
+        return stringResult;
+    }
+
+
+    for (var i = 0; i < array.length; i++) {
+        if ( longestWordlength < array[i].length) {
+        longestWordlength = array[i].length;
+        }
+    }
+    var topAndBottomLength = longestWordlength + 4;
+    for (var j = 0; j < topAndBottomLength; j++) {
+        topAndBottomString += '*';
+    }
+
+    for (var k = 0; k < array.length; k++) {
+        spaceSize = longestWordlength - array[k].length;
+        spaceString = makeStringFromChar(' ', spaceSize);
+        middlePart += '* ' + array[k] + spaceString + ' *\n';
+    }
+    frame = topAndBottomString + '\n' + middlePart + topAndBottomString
+    return frame;
+}
+console.log(rectangularFrame(['Hello', 'World', 'in', 'a', 'frame']));
+
