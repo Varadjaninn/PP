@@ -94,8 +94,32 @@ Input: JSGuru123
 Output: Your password is cool!
 */
 
+function successCallback() {
+    return 'Your password is cool!';
+}
+
+function errorCallback() {
+    return 'Your password is invalid!';
+}
 
 
+function isValidPassword(password, functionCorrect, functionError) {
+        if (password.length >= 6) {
+            for (var i = 0; i < password.length; i++) {
+                password[i] = parseInt(password[i]);
+                if (!isNaN(password[i])) {
+                    return functionCorrect();
+                }
+            }
+            return functionError();
+        } else {
+            return functionError();
+        }
+}
+
+console.log(isValidPassword('JSGuru123', successCallback, errorCallback ));
+console.log(isValidPassword('JSGuru', successCallback, errorCallback ));
+console.log(isValidPassword('N111emanjaVaradjanin', successCallback, errorCallback ));
 
 /*
 7. Write a function that filters elements of the given array so that they satisfy a condition
@@ -103,3 +127,19 @@ given by the callback function.
 Input: [2, 8, 11, 4, 9, 3], callback function checks if the number is odd
 Output: [11, 9, 3]
 */
+
+function filterOddElement(array) {
+    var newArray = [];
+    for (var i = 0; i < array.length; i++) {
+        if (array[i] % 2 === 1) {
+            newArray[newArray.length] = array[i];
+        }
+    }
+    return newArray;
+}
+
+function callBackFunOdd (array, filterFun) {
+    return filterFun(array);
+}
+
+console.log(callBackFunOdd([2, 8, 11, 4, 9, 3], filterOddElement));
