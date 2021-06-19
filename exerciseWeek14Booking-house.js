@@ -198,12 +198,33 @@ There are 3 bets on Serbia
         if (!competition || !numberOfPlayers) {
             throw new Error ('Invalid betting house data input');
         }
+
+        this.competition = competition;
+        this.listOfBettingPlaces = [];
+        this.numberOfPlayers = numberOfPlayers;
+
+        this.addBettingPlace = function (betPlace) {
+            if (!betPlace || !(betPlace instanceof BettingPlace)) {
+                throw new Error ('Invalid Bet Place input');
+            } else {
+                this.listOfBettingPlaces.push(betPlace);
+            }
+        }
+
+        this.getData = function () {
+            
+        }
     }
 
-    function createdPlayer(personName, personSurname, dob, betAmount, countryName, odds, continent) {
+    function createPlayer(personName, personSurname, dob, betAmount, countryName, odds, continent) {
         var person = new Person(personName, personSurname, dob);
         var country = new Country(countryName, odds, continent);
-        return new Player()
+        return new Player(person, betAmount, country)
+    }
+
+    function createBettingPlace(country, city, postalCode, street, streetNumber) {
+        var address = new Address(country, city, postalCode, street, streetNumber);
+        return new BettingPlace(address);
     }
 
 

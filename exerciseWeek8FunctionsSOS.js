@@ -142,7 +142,13 @@ console.log(checkProperty(['x', 20, 'y', 30], 'y', 30))
 array. Be careful with repetitions!
 Input: [3, 4, 1, 3], [8, 9, 3, 1, 11, 4, 3]
 Output: true
+*/
 
+function isElementContained(array1, array2) {
+    
+}
+
+/*
 9. Write a function that sorts an array of strings by the number of appearances of the letter
 ‘a’ or ‘A’.{}
 Input: [‘apple’, ‘tea’, ‘amazing’, ‘morning’, ‘JavaScript’]
